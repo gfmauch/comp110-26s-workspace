@@ -1,9 +1,10 @@
 """File to define River class."""
 
 from __future__ import annotations
-from ex07.fish import Fish
-from ex07.bear import Bear
+from exercises.ex07.fish import Fish
+from exercises.ex07.bear import Bear
 
+__author__ = "730822602"
 
 class River:
 
@@ -23,28 +24,71 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
+        """Implement the inevitable death of all of god's creatures if they are too old."""
+        for curFish in reversed(self.fish):
+            if (curFish.age > 3):
+                self.fish.remove(curFish)
+        
+        for curBear in reversed(self.bears):
+            if (curBear.age > 5):
+                self.bears.remove(curBear)
+
         return None
 
     def bears_eating(self):
+        for curBear in self.bears:
+            if (len(self.fish) >= 5):
+                curBear.eat(3)
+                self.remove_fish(3)
+                
         return None
 
     def check_hunger(self):
+        for curBear in reversed(self.bears):
+            if (curBear.hunger_score < 0):
+                self.bears.remove(curBear)
+        
         return None
 
     def repopulate_fish(self):
+        """Repopulate fish."""
+        numFish : int = len(self.fish)
+        numOffspring : int = int((numFish / 2) * 4)
+        for _ in range(0, numOffspring):
+            self.fish.append(Fish())
+    
         return None
 
     def repopulate_bears(self):
+        """Repopulate bears."""
+        numBears : int = len(self.bears)
+        numOffspring : int = int(numBears / 2)
+        for _ in range(0, numOffspring):
+            self.bears.append(Bear())
+
+        return None
+    
+    def remove_fish(self, amount:int):
+        for _ in range(0, amount):
+            self.fish.pop(0)
+
         return None
 
     def __str__(self) -> str:
-        return ""
+        """Visual representation of the River state."""
+        return f"~~~ Day {self.day}: ~~~\nFish population: {len(self.fish)}\nBear population: {len(self.bears)}"
     
     def __add__(self, other_riv: River) -> River:
-        return self
+        """Create a new river with self + other_riv number of creatures."""
+        numBears : int = len(self.bears) + len(other_riv.bears)
+        numFish : int = len(self.fish) + len(other_riv.fish)
+        return River(numFish, numBears)
     
     def __mul__(self, factor: int) -> River:
-        return self
+        """Create a river that is 'factor' bigger than this river."""
+        numBears : int = len(self.bears) * factor
+        numFish : int = len(self.fish) * factor
+        return River(numFish, numBears)
 
     def one_river_day(self):
         """Simulate one day of life in the river"""
@@ -68,3 +112,8 @@ class River:
         self.repopulate_bears()
         # Visualize River
         print(self)
+
+    def one_river_week(self):
+        """Simulate the elapsig of one calendar week in the river."""
+        for _ in range (0, 7):
+            self.one_river_day()
