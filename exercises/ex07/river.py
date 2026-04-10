@@ -1,5 +1,6 @@
 """File to define River class."""
 
+
 from __future__ import annotations
 from exercises.ex07.fish import Fish
 from exercises.ex07.bear import Bear
@@ -7,7 +8,7 @@ from exercises.ex07.bear import Bear
 __author__ = "730822602"
 
 class River:
-
+    """Implement a river simulation."""
     day: int
     fish: list[Fish]
     bears: list[Bear]
@@ -52,7 +53,7 @@ class River:
 
     def repopulate_fish(self):
         """Repopulate fish."""
-        numOffspring : int = int(len(self.fish) / 2) * 4
+        numOffspring: int = int(len(self.fish) / 2) * 4
         for _ in range(0, numOffspring):
             self.fish.append(Fish())
     
@@ -60,8 +61,8 @@ class River:
 
     def repopulate_bears(self):
         """Repopulate bears."""
-        numBears : int = len(self.bears)
-        numOffspring : int = int(numBears / 2)
+        numBears: int = len(self.bears)
+        numOffspring: int = int(numBears / 2)
         for _ in range(0, numOffspring):
             self.bears.append(Bear())
 
@@ -79,14 +80,14 @@ class River:
     
     def __add__(self, other_riv: River) -> River:
         """Create a new river with self + other_riv number of creatures."""
-        numBears : int = len(self.bears) + len(other_riv.bears)
-        numFish : int = len(self.fish) + len(other_riv.fish)
+        numBears: int = len(self.bears) + len(other_riv.bears)
+        numFish: int = len(self.fish) + len(other_riv.fish)
         return River(numFish, numBears)
     
     def __mul__(self, factor: int) -> River:
         """Create a river that is 'factor' bigger than this river."""
-        numBears : int = len(self.bears) * factor
-        numFish : int = len(self.fish) * factor
+        numBears: int = len(self.bears) * factor
+        numFish: int = len(self.fish) * factor
         return River(numFish, numBears)
 
     def one_river_day(self):
