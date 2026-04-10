@@ -52,8 +52,7 @@ class River:
 
     def repopulate_fish(self):
         """Repopulate fish."""
-        numFish : int = len(self.fish)
-        numOffspring : int = int((numFish / 2) * 4)
+        numOffspring : int = int(len(self.fish) / 2) * 4
         for _ in range(0, numOffspring):
             self.fish.append(Fish())
     
