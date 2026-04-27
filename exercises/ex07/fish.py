@@ -1,6 +1,9 @@
 """File to define Fish class."""
 
+
 class Fish:
+    """Implement fish."""
+    
     age: int
     def __init__(self):
         """Initilizes age."""
@@ -9,5 +12,5 @@ class Fish:
 
     def one_day(self):
         """Increment age."""
-        self.age = self.age + 1;
+        self.age = self.age + 1
         return None

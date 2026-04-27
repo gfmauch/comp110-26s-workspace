@@ -8,13 +8,14 @@ from exercises.ex07.bear import Bear
 __author__ = "730822602"
 
 class River:
-    """Implement a river simulation."""
+    """Implements a river simulation."""
+    
     day: int
     fish: list[Fish]
     bears: list[Bear]
 
     def __init__(self, num_fish: int, num_bears: int):
-        """New River with num_fish Fish and num_bears Bears"""
+        """New River with num_fish Fish and num_bears Bears."""
         self.day: int = 0
         self.fish: list[Fish] = []
         self.bears: list[Bear] = []
@@ -37,6 +38,7 @@ class River:
         return None
 
     def bears_eating(self):
+        """Implements bears eating fish."""
         for curBear in self.bears:
             if (len(self.fish) >= 5):
                 curBear.eat(3)
@@ -91,7 +93,7 @@ class River:
         return River(numFish, numBears)
 
     def one_river_day(self):
-        """Simulate one day of life in the river"""
+        """Simulate one day of life in the river."""
         # Increase day by 1
         self.day += 1
         # Simulate one day for all Bears
@@ -115,5 +117,5 @@ class River:
 
     def one_river_week(self):
         """Simulate the elapsig of one calendar week in the river."""
-        for _ in range (0, 7):
+        for _ in range(0, 7):
             self.one_river_day()

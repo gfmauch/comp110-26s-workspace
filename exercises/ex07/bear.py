@@ -1,6 +1,9 @@
 """File to define Bear class."""
 
+
 class Bear:
+    """Implement bear."""
+    
     def __init__(self):
         """Initilizes age and hunger."""
         self.age = 0
@@ -9,8 +12,8 @@ class Bear:
     def one_day(self):
         """Increment age."""
         self.age = self.age + 1
-        self.hunger_score = self.hunger_score - 1;
+        self.hunger_score = self.hunger_score - 1
 
-    def eat(self, num_fish : int):
+    def eat(self, num_fish: int):
         """When a bear eats."""
-        self.hunger_score += num_fish;
+        self.hunger_score += num_fish
