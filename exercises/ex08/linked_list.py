@@ -52,12 +52,6 @@ def linkify(items: list[int]) -> Node | None:
     return Node(items[0], linkify(items[1:]))  # Create node with 1st item and link to rest
 
 
-def scale(head: Node | None, factor: int) -> Node | None:
-    """Returns new linked list with values scaled."""
-    if head is None:
-        return None
-    return Node(head.value * factor, scale(head.next, factor))
-
 
 node_c: Node = Node(4, None)
 node_b: Node = Node(0, node_c)
