@@ -131,7 +131,7 @@ def select(table: dict[str, list[str]], names: list[str]) -> dict[str, list[str]
     return result
 
 
-def concat(table1: dict[str, list[str]], table2: dict[str, list[str]]) -> dict[str, list[str]]:e
+def concat(table1: dict[str, list[str]], table2: dict[str, list[str]]) -> dict[str, list[str]]:
     """Produce a new column-oriented table that is the two tables combined."""
     result: dict[str, list[str]] = {}
     
